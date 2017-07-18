@@ -8,9 +8,10 @@ other_org::other_org(){
 	org.push_back("mishka krepkaya shishka");//все организации в игре заливать сюда
 	price.push_back(4000);//цены
 	service.push_back("reklama");
+	duration.push_back(20);
 }
 
-string
+//string other_org:
 newspaper::newspaper(){
 	money=40000;
 }
@@ -101,6 +102,8 @@ void do_something(newspaper * player,society * good,nation * beach){
 			player->
 			weak_harass(beach);
 			break;
+		//case 2:
+
 		default:
 			break;
 	}

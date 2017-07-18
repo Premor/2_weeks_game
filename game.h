@@ -5,8 +5,8 @@ class society;
 class struct_ob;
 class newspaper;
 class other_org;
-class struct_ob
-{
+
+class struct_ob {
 protected:
 	double status;// от 0 до 1000
 	double relation;//отношение к игроку, от -1000 до 1000
@@ -19,23 +19,32 @@ public:
 	int change_relation(double);
 	
 };
-class other_org{
+class other_org {
 	vector<string> org;
 	vector<int> price;
 	vector<string> service;
+	vector<int> duration;
 public:
 	other_org();
 	string get_service();
 	string get_org();
+	int get_duration();
 	int get_price();
 	void add_org();
 };
+struct data_with_desc {
+	tm * data;
+	string desc;
+};
 class newspaper { //собственно то, чем мы управляем в игре
 	int money;
+	vector<data_with_desc> calendar;
 	vector<string> contracts;//с кем есть контракты
 	vector<string> workers;//работники
 public:
 	newspaper();
+	void add_money(int);
+	void add_contract(data_with_desc);
 	void weak_harass(nation*);
 	void weak_harass(society*);
 };
