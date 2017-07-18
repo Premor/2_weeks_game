@@ -12,12 +12,12 @@ newspaper::newspaper(){
 	money=40000;
 }
 
-void newspaper::weak_haras(nation * something){
+void newspaper::weak_harass(nation * something){
 	something->change_stat(-10.0);
 	something->change_relation(-20.0);
 }
 
-void newspaper::weak_haras(society * something){
+void newspaper::weak_harass(society * something){
 	something->change_stat(-10.0);
 	something->change_relation(-20.0);
 }
