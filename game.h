@@ -22,8 +22,8 @@ class newspaper { //собственно то, чем мы управляем в
 	vector<string> contracts;//с кем есть контракты
 public:
 	newspaper();
-	void weak_haras(nation*);
-	void weak_haras(society*);
+	void weak_harass(nation*);
+	void weak_harass(society*);
 };
 
 class society:public struct_ob { //общественность
