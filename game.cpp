@@ -4,7 +4,9 @@
 using namespace std;
 #include "game.h"
 
-
+other_org::other_org(){
+	org.push_back("some shit")//все организации в игре заливать сюда
+}
 
 newspaper::newspaper(){
 	money=40000;

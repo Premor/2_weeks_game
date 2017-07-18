@@ -16,10 +16,15 @@ public:
 	int change_relation(double);
 	
 };
-
+class other_org{
+	vector<string> org;
+public:
+	other_org();
+};
 class newspaper { //собственно то, чем мы управляем в игре
 	int money;
 	vector<string> contracts;//с кем есть контракты
+	vector<string> workers;//работники
 public:
 	newspaper();
 	void weak_haras(nation*);
