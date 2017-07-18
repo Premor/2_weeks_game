@@ -5,9 +5,12 @@ using namespace std;
 #include "game.h"
 
 other_org::other_org(){
-	org.push_back("some shit")//все организации в игре заливать сюда
+	org.push_back("mishka krepkaya shishka");//все организации в игре заливать сюда
+	price.push_back(4000);//цены
+	service.push_back("reklama");
 }
 
+string
 newspaper::newspaper(){
 	money=40000;
 }
@@ -25,6 +28,7 @@ void newspaper::weak_harass(society * something){
 society::society(){
 	status=700.0;
 	relation=0;
+	relation_to_nat=-100;
 }
 
 nation::nation(){
@@ -84,8 +88,8 @@ void world::next_day(int i=1){
 
 void logic(){}
 void graphic(){}
-void end_day(world one){
-	one.next_day();
+void end_day(world * one){
+	one->next_day();
 }
 
 void do_something(newspaper * player,society * good,nation * beach){
@@ -94,7 +98,8 @@ void do_something(newspaper * player,society * good,nation * beach){
 	cin>>x;
 	switch(x){
 		case 1:
-			player->weak_haras(beach);
+			player->
+			weak_harass(beach);
 			break;
 		default:
 			break;
@@ -107,13 +112,14 @@ int main(int argc, char*argv[])
 	newspaper player;
 	society good;
 	nation beach;
-	while((one.get_time())->tm_mday<20)
+	int end=(one.get_time())->tm_mday+10;
+	while((one.get_time())->tm_mday<end)
 	{
 		//пока не имею понятия, как это сделать правильно
 		logic();//посмотрим, мб логика мира будет в конце дня
 		graphic();
 		do_something(&player,&good,&beach);//действия игрока
-		end_day(one);
+		end_day(&one);
 
 	}
 	cout<<"Current Datetime:"<<asctime(one.get_time())<<endl

@@ -2,6 +2,9 @@
 //мб общество и правительство отнаследовать от одного класса (пока не актуально)
 class nation;
 class society;
+class struct_ob;
+class newspaper;
+class other_org;
 class struct_ob
 {
 protected:
@@ -18,8 +21,14 @@ public:
 };
 class other_org{
 	vector<string> org;
+	vector<int> price;
+	vector<string> service;
 public:
 	other_org();
+	string get_service();
+	string get_org();
+	int get_price();
+	void add_org();
 };
 class newspaper { //собственно то, чем мы управляем в игре
 	int money;
@@ -32,7 +41,7 @@ public:
 };
 
 class society:public struct_ob { //общественность
-	
+	double relation_to_nat;
 public:
 	society();
 	//friend newspaper;
@@ -56,5 +65,5 @@ class world {
 		void next_hours(int);
 		void next_day(int);
 };
-void end_day(world);
-void do_something(newspaper,society,nation);
+void end_day(world*);
+void do_something(newspaper*,society*,nation*);
