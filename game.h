@@ -26,10 +26,11 @@ class other_org {
 	vector<int> duration;
 public:
 	other_org();
-	string get_service();
-	string get_org();
-	int get_duration();
-	int get_price();
+	string get_service(int);
+	string get_org(int);
+	int get_duration(int);
+	int get_price(int);
+	void get_list(vector<string> *);
 	void add_org();
 };
 struct data_with_desc {
@@ -45,6 +46,7 @@ public:
 	newspaper();
 	void add_money(int);
 	void add_contract(data_with_desc);
+	data_with_desc remove_contract(int);
 	void weak_harass(nation*);
 	void weak_harass(society*);
 };
@@ -75,4 +77,7 @@ class world {
 		void next_day(int);
 };
 void end_day(world*);
-void do_something(newspaper*,society*,nation*);
+void do_something(newspaper*,society*,nation*,other_org*);
+data_with_desc check_data_desc(string);
+void check_update();
+
