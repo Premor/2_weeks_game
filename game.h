@@ -44,11 +44,12 @@ class newspaper { //собственно то, чем мы управляем в
 	vector<string> workers;//работники
 public:
 	newspaper();
+	void make_paper();
 	void add_money(int);
 	void add_contract(data_with_desc);
 	data_with_desc remove_contract(int);
-	void weak_harass(nation*);
-	void weak_harass(society*);
+	void weak_harass(nation*,double);
+	void weak_harass(society*,double);
 };
 
 class society:public struct_ob { //общественность

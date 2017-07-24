@@ -35,7 +35,11 @@ void other_org::get_list(vector<string> * v) {
 newspaper::newspaper(){
 	money=40000;
 }
-
+void newspaper::make_paper() {
+	double k1=2.4;
+	double k2=1.4;
+	double k3=0.4;
+}
 void newspaper::add_contract(data_with_desc d) {
 	calendar.push_back(d);
 }
@@ -46,14 +50,14 @@ data_with_desc newspaper::remove_contract(int i) {
 	return ret;
 }
 
-void newspaper::weak_harass(nation * something) {
-	something->change_stat(-10.0);
-	something->change_relation(-20.0);
+void newspaper::weak_harass(nation * something,double k=1.) {
+	something->change_stat(-10.0*k);
+	something->change_relation(-20.0*k);
 }
 
-void newspaper::weak_harass(society * something) {
-	something->change_stat(-10.0);
-	something->change_relation(-20.0);
+void newspaper::weak_harass(society * something,double k=1.) {
+	something->change_stat(-10.0*k);
+	something->change_relation(-20.0*k);
 }
 
 society::society(){
@@ -123,6 +127,7 @@ void logic(){}
 void graphic(){}
 void end_day(world * one){
 	one->next_day();
+	cout<<"Current Datetime:"<<asctime(one->get_time())<<endl;
 }
 void check_update() {
 	clock_t now=clock();
@@ -134,26 +139,49 @@ void check_update() {
 void do_something(newspaper * player,society * good,nation * beach,other_org * org){
 	int x;
 	vector<string> list[2];
-	cout<<"Choose action"<<endl;//пока нет графики будет это
-	cin>>x;
+	cout<<"Choose action"<<endl<<"1)Make paper"<<endl;//пока нет графики будет это
+
+	/*cin>>x;
 	switch(x){
 		case 1:
-			player->weak_harass(beach);
+			cout<<"first page"<<endl<<"1)harass gos"<<endl<<"2)harass people"<<endl;
+			//cin>>x;
+			/*switch(x) {
+				case 1:
+					player->weak_harass(beach);
+					break;
+				case 2:
+					player->weak_harass(good);
+					break;
+				default:
+					break;
+		}
+			cout<<"second page"<<endl<<"1)harass gos"<<endl<<"2)harass people"<<endl;
+			cin>>x;
+			switch(x) {
+				case 1:
+					player->weak_harass(beach);
+					break;
+				case 2:
+					player->weak_harass(good);
+					break;
+				default:
+					break;
+		}
 			break;
 		case 2:
 			org->get_list(list);
 			cout<<list[1][0]<<endl;
 			break;
 		default:
-			
 			//cout<<(world_time/CLOCKS_PER_SEC)<<endl;
 			break;
-	}
+	}*/
 }
 
 int main(int argc, char*argv[])
 {
-	last_update=clock();
+	//last_update=clock();
 	world one;
 	newspaper player;
 	society good;
