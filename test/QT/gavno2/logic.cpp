@@ -8,11 +8,11 @@ using namespace std;
 //clock_t last_update;
 //clock_t DELTA_UPDATE=CLOCKS_PER_SEC*0.07;
 
-//world* one;
-newspaper player;
-society good;
-nation beach;
-other_org org;
+world one;
+//newspaper player;
+//society good;
+//nation beach;
+//other_org org;
 other_org::other_org(){
     org.push_back("mishka krepkaya shishka");//все организации в игре заливать сюда
     price.push_back(4000);//цены
@@ -91,6 +91,19 @@ void world::set_time(tm * t){
 
 }
 */
+nation* world::get_nat(){
+    return &nat;
+}
+
+society* world::get_soc(){
+    return &soc;
+}
+newspaper* world::get_paper(){
+    return &paper;
+}
+other_org* world::get_org(){
+    return &org;
+}
 double struct_ob::get_stat(){
     return status;
 }

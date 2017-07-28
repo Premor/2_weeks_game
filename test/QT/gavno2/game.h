@@ -70,17 +70,20 @@ public:
 
 };
 
-/*class world {
-   // struct tm * times;
+class world {
+    nation nat;
+    society soc;
+    newspaper paper;
+    other_org org;
     public:
-        world();
-        //tm * get_time();
-        //void set_time(tm *);
-       // void next_hours(int);
-        //void next_day(int);
-        //void test_friend();
+        //world();
+        nation* get_nat();
+        society* get_soc();
+        newspaper* get_paper();
+        other_org* get_org();
+
 };
-void end_day(world*);*/
+//void end_day(world*);*/
 void do_something(newspaper*,society*,nation*,other_org*);
 //data_with_desc check_data_desc(std::string);
 void check_update();

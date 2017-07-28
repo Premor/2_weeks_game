@@ -17,8 +17,15 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(ui->pushButton_3,&QPushButton::clicked,this,&MainWindow::new_frame);
     QObject::connect(ui->start_game,&QPushButton::clicked,this,&MainWindow::begin_game);
     ui->picture->hide();
+    ui->pushButton_3->setStyleSheet("border-image: url(:/images/btn_bottom.png) stretch;");
+    ui->pushButton_2->setStyleSheet("border-image: url(:/images/btn_bottom.png) stretch;");
+    ui->pushButton->setStyleSheet("border-image: url(:/images/btn_bottom.png) stretch;");
     ui->picture->setPixmap(QPixmap(":/images/map.png"));
+    ui->bg->setPixmap(QPixmap(":/images/bg.jpg"));
     ui->calendarWidget->hide();
+    ui->pushButton_3->setFixedSize(100,30);
+    ui->pushButton->setFixedSize(100,30);
+    ui->pushButton_2->setFixedSize(100,30);
     ui->pushButton->hide();
     ui->pushButton_2->hide();
     ui->pushButton_3->hide();
@@ -31,7 +38,7 @@ MainWindow::~MainWindow()
 
 }
 void MainWindow::new_frame(){
-    Dialog *dl=new Dialog(&beach,&good,&player,&org);
+    Dialog *dl=new Dialog(&one);
     dl->show();
 }
 
