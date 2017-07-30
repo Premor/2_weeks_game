@@ -64,7 +64,7 @@
      <rect>
       <x>40</x>
       <y>480</y>
-      <width>1041</width>
+      <width>791</width>
       <height>151</height>
      </rect>
     </property>
@@ -140,13 +140,54 @@
      <string/>
     </property>
    </widget>
+   <widget class="QWidget" name="verticalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>1000</x>
+      <y>180</y>
+      <width>261</width>
+      <height>221</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Полоса 1</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>Полоса 2</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>Полоса 3</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
    <zorder>bg</zorder>
    <zorder>picture</zorder>
    <zorder>calendarWidget</zorder>
    <zorder>start_game</zorder>
    <zorder>horizontalLayoutWidget</zorder>
-   <zorder>pushButton_2</zorder>
-   <zorder>pushButton</zorder>
+   <zorder>verticalLayoutWidget</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">

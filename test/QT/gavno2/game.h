@@ -8,6 +8,11 @@ class struct_ob;
 class newspaper;
 class other_org;
 
+struct event_desc{
+    int id;
+    std::string desc;
+};
+
 class game_event {
     double incom;
     double change_truthfulness;
@@ -16,6 +21,7 @@ class game_event {
     double change_wealth_soc;
     double change_wealth_nat;
     int id_event;
+    std::string desc;
 public:
     game_event(int id);
     double get_incom();
@@ -96,5 +102,5 @@ class world {
         other_org* get_org();
 };
 void init_event();
-
+void init_event_desc(std::vector<event_desc *> *v);
 #endif // GAME_H

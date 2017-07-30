@@ -150,3 +150,11 @@ int struct_ob::change_relation(double i){
     relation+=i;
     return 0;
 }
+
+void init_event_desc(std::vector<event_desc*> *v){
+    event_desc* e1=new event_desc();
+    e1->id=1;
+    e1->desc="GAVNO JOPA CHLEN";
+    v->push_back(e1);
+
+}

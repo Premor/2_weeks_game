@@ -15,6 +15,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     //init_world();
     init_event();
+    init_event_desc(&desc);
     QObject::connect(ui->pushButton,&QPushButton::clicked,this,&MainWindow::v_gorod);
     QObject::connect(ui->pushButton_2,&QPushButton::clicked,this,&MainWindow::next_day);
     QObject::connect(ui->pushButton_3,&QPushButton::clicked,this,&MainWindow::new_frame);
@@ -71,7 +72,7 @@ void MainWindow::begin_game(){
 }
 
 void MainWindow::v_gorod(){
-    Frame *f=new Frame(all_event.begin(),all_event.end(),&polosi_gazeti,&one,this);
+    Frame *f=new Frame(all_event.begin(),all_event.end(),&polosi_gazeti,&desc,&one,this);
     this->hide();
     f->show();
 

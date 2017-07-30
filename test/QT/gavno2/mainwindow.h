@@ -31,6 +31,7 @@ private:
     world one;
     std::vector<game_event *> all_event;
     std::vector<game_event *> polosi_gazeti;
+    std::vector<event_desc *> desc;
     Ui::MainWindow *ui;
 
 
