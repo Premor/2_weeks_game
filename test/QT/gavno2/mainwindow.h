@@ -2,7 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-//#include "game.h"
+#include "game.h"
 
 namespace Ui {
 class MainWindow;
@@ -15,9 +15,10 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+    void init_event();
 private slots:
     //void on_pushButton_clicked();
-    void update();
+    void v_gorod();
     void next_day();
     void begin_game();
     void new_frame();
@@ -27,7 +28,9 @@ signals:
 private:
     //friend world;
     //friend int gavno();
-    int g;
+    world one;
+    std::vector<game_event *> all_event;
+    std::vector<game_event *> polosi_gazeti;
     Ui::MainWindow *ui;
 
 

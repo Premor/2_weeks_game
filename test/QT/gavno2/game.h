@@ -8,6 +8,24 @@ class struct_ob;
 class newspaper;
 class other_org;
 
+class game_event {
+    double incom;
+    double change_truthfulness;
+    double change_relation_soc;
+    double change_relation_nat;
+    double change_wealth_soc;
+    double change_wealth_nat;
+    int id_event;
+public:
+    game_event(int id);
+    double get_incom();
+    double get_change_truthfulness();
+    double get_change_relation_soc();
+    double get_change_relation_nat();
+    double get_change_wealth_soc();
+    double get_change_wealth_nat();
+};
+
 class struct_ob {
 protected:
     double status;// от 0 до 1000
@@ -35,10 +53,6 @@ public:
     void get_list(std::vector<std::string> *);
     void add_org();
 };
-/*struct data_with_desc {
-    tm * data;
-    std::string desc;
-};*/
 class newspaper { //собственно то, чем мы управляем в игре
     int money;
     //std::vector<data_with_desc> calendar;
@@ -76,17 +90,11 @@ class world {
     newspaper paper;
     other_org org;
     public:
-        //world();
         nation* get_nat();
         society* get_soc();
         newspaper* get_paper();
         other_org* get_org();
-
 };
-//void end_day(world*);*/
-void do_something(newspaper*,society*,nation*,other_org*);
-//data_with_desc check_data_desc(std::string);
-void check_update();
-int gavno();
+void init_event();
 
 #endif // GAME_H
