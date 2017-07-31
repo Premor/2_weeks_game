@@ -14,7 +14,7 @@ struct event_desc{
 };
 
 class game_event {
-    double incom;
+    int incom;
     double change_truthfulness;
     double change_relation_soc;
     double change_relation_nat;
@@ -30,6 +30,7 @@ public:
     double get_change_relation_nat();
     double get_change_wealth_soc();
     double get_change_wealth_nat();
+    std::string get_desc();
 };
 
 class struct_ob {
@@ -61,6 +62,7 @@ public:
 };
 class newspaper { //собственно то, чем мы управляем в игре
     int money;
+    double trust;
     //std::vector<data_with_desc> calendar;
     std::vector<std::string> contracts;//с кем есть контракты
     std::vector<std::string> workers;//работники
@@ -72,6 +74,8 @@ public:
     //data_with_desc remove_contract(int);
     void weak_harass(nation*,double);
     void weak_harass(society*,double);
+    int get_money();
+    double get_trust();
 };
 
 class society:public struct_ob { //общественность
@@ -102,5 +106,5 @@ class world {
         other_org* get_org();
 };
 void init_event();
-void init_event_desc(std::vector<event_desc *> *v);
+//void init_event_desc(std::vector<event_desc *> *v);
 #endif // GAME_H

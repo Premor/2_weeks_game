@@ -80,6 +80,16 @@
       </widget>
      </item>
      <item>
+      <widget class="QPushButton" name="pushButton_4">
+       <property name="styleSheet">
+        <string notr="true">border-image: url(:/images/btn_bottom.png) stretch;</string>
+       </property>
+       <property name="text">
+        <string>О нас</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <spacer name="horizontalSpacer">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
@@ -98,7 +108,7 @@
         <bool>true</bool>
        </property>
        <property name="text">
-        <string>PushButton</string>
+        <string>Че обозревать</string>
        </property>
       </widget>
      </item>
@@ -149,9 +159,9 @@
       <height>221</height>
      </rect>
     </property>
-    <layout class="QVBoxLayout" name="verticalLayout">
+    <layout class="QVBoxLayout" name="polosi_gazeti">
      <item>
-      <widget class="QLabel" name="label">
+      <widget class="QLabel" name="polosa1">
        <property name="text">
         <string>Полоса 1</string>
        </property>
@@ -161,7 +171,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="label_2">
+      <widget class="QLabel" name="polosa2">
        <property name="text">
         <string>Полоса 2</string>
        </property>
@@ -171,7 +181,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="label_3">
+      <widget class="QLabel" name="polosa3">
        <property name="text">
         <string>Полоса 3</string>
        </property>
@@ -305,6 +315,70 @@
     <hint type="destinationlabel">
      <x>495</x>
      <y>288</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>start_game</sender>
+   <signal>clicked()</signal>
+   <receiver>polosa1</receiver>
+   <slot>show()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>507</x>
+     <y>334</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1130</x>
+     <y>248</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>start_game</sender>
+   <signal>clicked()</signal>
+   <receiver>polosa2</receiver>
+   <slot>show()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>507</x>
+     <y>334</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1130</x>
+     <y>323</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>start_game</sender>
+   <signal>clicked()</signal>
+   <receiver>polosa3</receiver>
+   <slot>show()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>507</x>
+     <y>334</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1130</x>
+     <y>398</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>start_game</sender>
+   <signal>clicked()</signal>
+   <receiver>pushButton_4</receiver>
+   <slot>show()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>507</x>
+     <y>334</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>135</x>
+     <y>588</y>
     </hint>
    </hints>
   </connection>

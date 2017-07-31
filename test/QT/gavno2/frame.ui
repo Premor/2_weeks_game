@@ -19,17 +19,21 @@
   <property name="frameShadow">
    <enum>QFrame::Raised</enum>
   </property>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="remove">
    <property name="geometry">
     <rect>
-     <x>160</x>
-     <y>590</y>
-     <width>75</width>
-     <height>21</height>
+     <x>810</x>
+     <y>550</y>
+     <width>91</width>
+     <height>31</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">border-image: url(:/images/btn_bottom.png) stretch;</string>
+   </property>
    <property name="text">
-    <string>PushButton</string>
+    <string>Убрать статью
+ с полосы</string>
    </property>
   </widget>
   <widget class="QWidget" name="verticalLayoutWidget">
@@ -51,6 +55,31 @@
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_4">
+      <item>
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>TextLabel</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_6">
+        <property name="text">
+         <string>TextLabel</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </item>
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -153,7 +182,7 @@
    </property>
    <layout class="QVBoxLayout" name="verticalLayout_2">
     <item>
-     <widget class="QLabel" name="label">
+     <widget class="QLabel" name="polosa1">
       <property name="text">
        <string>Полоса 1</string>
       </property>
@@ -163,7 +192,7 @@
      </widget>
     </item>
     <item>
-     <widget class="QLabel" name="label_2">
+     <widget class="QLabel" name="polosa2">
       <property name="text">
        <string>Полоса 2</string>
       </property>
@@ -173,7 +202,7 @@
      </widget>
     </item>
     <item>
-     <widget class="QLabel" name="label_6">
+     <widget class="QLabel" name="polosa3">
       <property name="text">
        <string>Полоса 3</string>
       </property>
@@ -268,12 +297,12 @@
   </widget>
   <zorder>bg</zorder>
   <zorder>label_9</zorder>
-  <zorder>desc_1</zorder>
-  <zorder>pushButton</zorder>
+  <zorder>remove</zorder>
   <zorder>verticalLayoutWidget</zorder>
   <zorder>event_1</zorder>
   <zorder>verticalLayoutWidget_2</zorder>
   <zorder>desc_pict_1</zorder>
+  <zorder>desc_1</zorder>
  </widget>
  <resources>
   <include location="images.qrc"/>

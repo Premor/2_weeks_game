@@ -28,19 +28,22 @@ SOURCES += \
         mainwindow.cpp \
     logic.cpp \
     dialog.cpp \
-    frame.cpp
+    frame.cpp \
+    info.cpp
 
 HEADERS += \
         mainwindow.h \
     game.h \
     dialog.h \
     const_koef.h \
-    frame.h
+    frame.h \
+    info.h
 
 FORMS += \
         mainwindow.ui \
     dialog.ui \
-    frame.ui
+    frame.ui \
+    info.ui
 
 DISTFILES += \
     map2.png

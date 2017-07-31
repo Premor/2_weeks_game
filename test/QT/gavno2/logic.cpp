@@ -4,6 +4,7 @@
 using namespace std;
 #include "game.h"
 #include <fstream>
+#include <sstream>
 
 
 
@@ -36,24 +37,58 @@ double game_event::get_change_wealth_nat(){
 game_event::game_event(int id=1){
     ifstream f("koef.conf");
     int buf;
-    do
-        f >> buf;
-    while(buf!=id);
+    string another_buf;
+    string beach;
+    std::stringstream ss;
+    do{
+        std::getline(f,beach);
+        ss.str(beach);
+        std::getline(ss,another_buf,';');
+        buf=stoi(another_buf);
+    }while(buf!=id);
     id_event=buf;
-    //f >> id_event;
-    f >> incom;
-    f >> change_truthfulness;
-    f >> change_relation_soc;
-    f >> change_relation_nat;
-    f >> change_wealth_soc;
-    f >> change_wealth_nat;
+    std::getline(ss,another_buf,';');
+    incom=stoi(another_buf);
 
+    std::getline(ss,another_buf,';');
+    change_truthfulness=stod(another_buf);
 
-    //f.open("files/koef.conf",ios::in);
+    std::getline(ss,another_buf,';');
+    change_relation_soc=stod(another_buf);
 
-    /*if (f){
-        f
-    }*/
+    std::getline(ss,another_buf,';');
+    change_relation_nat=stod(another_buf);
+
+    std::getline(ss,another_buf,';');
+    change_wealth_soc=stod(another_buf);
+
+    std::getline(ss,another_buf,';');
+    change_wealth_nat=stod(another_buf);
+    f.close();
+    ifstream b("desc.ebala");
+    string buf2;
+    string buf3;
+    buf3=b.get();
+        if(buf3[0]=='&')
+            buf3=b.get();
+        for(;buf3[0]!='1'&&buf3[0]!=EOF;){
+           std::getline(b,buf2);
+           buf3=b.get();
+           if(buf3[0]=='&')
+               buf3=b.get();
+
+        }
+
+        std::getline(b,buf2);
+        desc=buf2+'\n';
+        buf3=b.get();
+        while(buf3[0]!='&'&&buf3[0]!=EOF)
+            {
+                std::getline(b,buf2);
+                desc+=buf2+'\n';
+                buf3=b.get();
+                }
+        b.close();
 }
 
 other_org::other_org(){
@@ -82,7 +117,15 @@ void other_org::get_list(vector<string> * v) {
 };
 newspaper::newspaper(){
     money=40000;
+    trust=0.0;
 }
+int newspaper::get_money(){
+    return money;
+}
+double newspaper::get_trust(){
+    return trust;
+}
+
 void newspaper::make_paper() {
     double k1=2.4;
     double k2=1.4;
@@ -150,11 +193,14 @@ int struct_ob::change_relation(double i){
     relation+=i;
     return 0;
 }
+std::string game_event::get_desc(){
+    return desc;
+}
 
-void init_event_desc(std::vector<event_desc*> *v){
+/*void init_event_desc(std::vector<event_desc*> *v){
     event_desc* e1=new event_desc();
     e1->id=1;
     e1->desc="GAVNO JOPA CHLEN";
     v->push_back(e1);
 
-}
+}*/
