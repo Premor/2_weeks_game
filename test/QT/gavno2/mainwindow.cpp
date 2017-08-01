@@ -6,7 +6,7 @@
 #include "frame.h"
 #include "info.h"
 
-
+#include <QMediaPlayer>
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -15,6 +15,12 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     //init_world();
+    QMediaPlayer *player = new QMediaPlayer;
+    player->setMedia(QUrl::fromLocalFile("10.mp3"));
+    player->setVolume(10);
+    player->play();
+
+
     init_event();
     //init_event_desc(&desc);
     QObject::connect(ui->pushButton,&QPushButton::clicked,this,&MainWindow::v_gorod);
@@ -49,6 +55,7 @@ void MainWindow::init_event(){
     game_event *first=new game_event(1);
     all_event.push_back(first);
     first=new game_event(2);
+    all_event.push_back(first);
 }
 void MainWindow::showEvent(QShowEvent *){
     update_polosi();
@@ -99,8 +106,21 @@ void MainWindow::next_day(){
     QDate date=(ui->calendarWidget)->selectedDate();
     date=date.addDays(Q_INT64_C(1));
     (ui->calendarWidget)->setSelectedDate(date);
-
-
+    game_event *buf[3];
+    auto it=polosi_gazeti.end();
+    int i=3;
+    do{
+        --it;
+        --i;
+        buf[i]=*it;
+    }while(it!=polosi_gazeti.begin()||i!=0);
+    polosi_gazeti.clear();
+    one.get_nat()->change_stat(buf[0]->get_change_wealth_nat()+buf[1]->get_change_wealth_nat()*0.8+buf[2]->get_change_wealth_nat()*0.6);
+    one.get_soc()->change_stat(buf[0]->get_change_wealth_soc()+buf[1]->get_change_wealth_soc()*0.8+buf[2]->get_change_wealth_soc()*0.6);
+    one.get_nat()->change_relation(buf[0]->get_change_relation_nat()+buf[1]->get_change_relation_nat()*0.8+buf[2]->get_change_relation_nat()*0.6);
+    one.get_soc()->change_relation(buf[0]->get_change_relation_soc()+buf[1]->get_change_relation_soc()*0.8+buf[2]->get_change_relation_soc()*0.6);
+    one.get_paper()->add_money((int)(buf[0]->get_incom()+buf[1]->get_incom()*0.8+buf[2]->get_incom()*0.6));
+    one.get_paper()->change_trust(buf[0]->get_change_truthfulness()+buf[1]->get_change_truthfulness()*0.8+buf[2]->get_change_truthfulness()*0.6);
 }
 void MainWindow::begin_game(){
 

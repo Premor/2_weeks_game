@@ -69,6 +69,7 @@ class newspaper { //собственно то, чем мы управляем в
 public:
     newspaper();
     void make_paper();
+    void change_trust(double);
     void add_money(int);
    // void add_contract(data_with_desc);
     //data_with_desc remove_contract(int);

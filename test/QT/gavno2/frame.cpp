@@ -10,10 +10,10 @@ Frame::Frame(std::vector<game_event*>::iterator _begin, std::vector<game_event*>
     one=_one;
     main=_main;
     begin=_begin;
-    //desc=_desc;
     polosi=_polosi;
     update_polosi();
     QObject::connect(ui->remove,&QPushButton::clicked,this,&Frame::pop_polosi);
+    QObject::connect(ui->exit,&QPushButton::clicked,this,&Frame::close);
     ui->desc_1->setText(QString::fromStdString((*begin)->get_desc()));
     ui->desc_1->hide();
     ui->desc_pict_1->hide();
@@ -72,8 +72,14 @@ bool Frame::eventFilter(QObject *watched, QEvent *event){
     if(watched==ui->event_1){
         if(event->type()==QEvent::Enter){
             ui->desc_1->show();
+            ui->event_marker->hide();
             ui->desc_pict_1->show();
+            ui->incom->setText(QString::fromStdString(std::to_string((*begin)->get_incom())));
             ui->truthful->setText(QString::fromStdString(std::to_string((*begin)->get_change_truthfulness())));
+            ui->stat_nat->setText(QString::fromStdString(std::to_string((*begin)->get_change_wealth_nat())));
+            ui->stat_soc->setText(QString::fromStdString(std::to_string((*begin)->get_change_wealth_soc())));
+            ui->relation_nat->setText(QString::fromStdString(std::to_string((*begin)->get_change_relation_nat())));
+            ui->relation_soc->setText(QString::fromStdString(std::to_string((*begin)->get_change_relation_soc())));
     }
         if(event->type()==QEvent::MouseButtonPress){//сделать не пресет эвенты
             if(polosi->size()<3){
@@ -85,7 +91,14 @@ bool Frame::eventFilter(QObject *watched, QEvent *event){
         if(event->type()==QEvent::Leave){
             ui->desc_1->hide();
             ui->desc_pict_1->hide();
-            ui->truthful->setText(QString::fromStdString(std::to_string(0)));}
+            ui->event_marker->show();
+            ui->truthful->setText(QString::fromStdString(std::to_string(0)));
+            ui->incom->setText(QString::fromStdString(std::to_string(0)));
+            ui->stat_nat->setText(QString::fromStdString(std::to_string(0)));
+            ui->stat_soc->setText(QString::fromStdString(std::to_string(0)));
+            ui->relation_nat->setText(QString::fromStdString(std::to_string(0)));
+            ui->relation_soc->setText(QString::fromStdString(std::to_string(0)));
+        }
     }
     return true;
 }

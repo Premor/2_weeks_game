@@ -59,23 +59,19 @@
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout_4">
       <item>
-       <widget class="QLabel" name="label_2">
+       <widget class="QLabel" name="label_8">
         <property name="text">
-         <string/>
+         <string>Правдивость</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label">
+       <widget class="QLabel" name="truthful">
         <property name="text">
-         <string>TextLabel</string>
+         <string>0</string>
         </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_6">
-        <property name="text">
-         <string>TextLabel</string>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
         </property>
        </widget>
       </item>
@@ -93,14 +89,10 @@
       <item>
        <widget class="QLabel" name="incom">
         <property name="text">
-         <string/>
+         <string>0</string>
         </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="truthful">
-        <property name="text">
-         <string/>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
         </property>
        </widget>
       </item>
@@ -118,14 +110,20 @@
       <item>
        <widget class="QLabel" name="relation_nat">
         <property name="text">
-         <string>TextLabel</string>
+         <string>0</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QLabel" name="stat_nat">
         <property name="text">
-         <string>TextLabel</string>
+         <string>0</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
         </property>
        </widget>
       </item>
@@ -143,14 +141,20 @@
       <item>
        <widget class="QLabel" name="relation_soc">
         <property name="text">
-         <string>TextLabel</string>
+         <string>0</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QLabel" name="stat_soc">
         <property name="text">
-         <string>TextLabel</string>
+         <string>0</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
         </property>
        </widget>
       </item>
@@ -295,6 +299,41 @@
     <pixmap resource="images.qrc">:/images/bg.jpg</pixmap>
    </property>
   </widget>
+  <widget class="QLabel" name="event_marker">
+   <property name="geometry">
+    <rect>
+     <x>430</x>
+     <y>190</y>
+     <width>41</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="images.qrc">:/images/Star1.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="exit">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>550</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-image: url(:/images/btn_bottom.png) stretch;</string>
+   </property>
+   <property name="text">
+    <string>Закрыть</string>
+   </property>
+  </widget>
   <zorder>bg</zorder>
   <zorder>label_9</zorder>
   <zorder>remove</zorder>
@@ -303,6 +342,8 @@
   <zorder>verticalLayoutWidget_2</zorder>
   <zorder>desc_pict_1</zorder>
   <zorder>desc_1</zorder>
+  <zorder>event_marker</zorder>
+  <zorder>exit</zorder>
  </widget>
  <resources>
   <include location="images.qrc"/>

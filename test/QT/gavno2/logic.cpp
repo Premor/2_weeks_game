@@ -11,7 +11,9 @@ using namespace std;
 double game_event::get_incom(){
     return incom;
 }
-
+void newspaper::add_money(int a){
+    money+=a;
+}
 
 double game_event::get_change_truthfulness(){
     return change_truthfulness;
@@ -51,10 +53,11 @@ game_event::game_event(int id=1){
     incom=stoi(another_buf);
 
     std::getline(ss,another_buf,';');
-    change_truthfulness=stod(another_buf);
+    change_truthfulness=stoi(another_buf);
+
 
     std::getline(ss,another_buf,';');
-    change_relation_soc=stod(another_buf);
+    change_relation_soc=stoi(another_buf);
 
     std::getline(ss,another_buf,';');
     change_relation_nat=stod(another_buf);
@@ -62,7 +65,7 @@ game_event::game_event(int id=1){
     std::getline(ss,another_buf,';');
     change_wealth_soc=stod(another_buf);
 
-    std::getline(ss,another_buf,';');
+    std::getline(ss,another_buf);
     change_wealth_nat=stod(another_buf);
     f.close();
     ifstream b("desc.ebala");
@@ -89,6 +92,10 @@ game_event::game_event(int id=1){
                 buf3=b.get();
                 }
         b.close();
+}
+
+void newspaper::change_trust(double b){
+    trust+=b;
 }
 
 other_org::other_org(){
