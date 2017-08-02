@@ -18,6 +18,18 @@ Frame::Frame(std::vector<game_event*>::iterator _begin, std::vector<game_event*>
     ui->desc_1->hide();
     ui->desc_pict_1->hide();
     ui->event_1->installEventFilter(this);
+    ui->desc_2->setText(QString::fromStdString((*(begin+1))->get_desc()));
+    ui->desc_2->hide();
+    ui->desc_pict_2->hide();
+    ui->event_2->installEventFilter(this);
+    ui->desc_3->setText(QString::fromStdString((*(begin+2))->get_desc()));
+    ui->desc_3->hide();
+    ui->desc_pict_3->hide();
+    ui->event_3->installEventFilter(this);
+    ui->desc_4->setText(QString::fromStdString((*(begin+3))->get_desc()));
+    ui->desc_4->hide();
+    ui->desc_pict_4->hide();
+    ui->event_4->installEventFilter(this);
     //ui->event_1->setPixmap(QPixmap(":/images/event_1.png"));
     //QObject::connect(ui->event_1,&QLabel::,this,&Frame::hover_1);
     //ui->truthful->setText(QString::fromStdString(std::to_string((*begin)->get_change_truthfulness())));
@@ -92,6 +104,99 @@ bool Frame::eventFilter(QObject *watched, QEvent *event){
             ui->desc_1->hide();
             ui->desc_pict_1->hide();
             ui->event_marker->show();
+            ui->truthful->setText(QString::fromStdString(std::to_string(0)));
+            ui->incom->setText(QString::fromStdString(std::to_string(0)));
+            ui->stat_nat->setText(QString::fromStdString(std::to_string(0)));
+            ui->stat_soc->setText(QString::fromStdString(std::to_string(0)));
+            ui->relation_nat->setText(QString::fromStdString(std::to_string(0)));
+            ui->relation_soc->setText(QString::fromStdString(std::to_string(0)));
+        }
+    }
+    if(watched==ui->event_2){
+        if(event->type()==QEvent::Enter){
+            ui->desc_2->show();
+            ui->event_marker_2->hide();
+            ui->desc_pict_2->show();
+            ui->incom->setText(QString::fromStdString(std::to_string((*(begin+1))->get_incom())));
+            ui->truthful->setText(QString::fromStdString(std::to_string((*(begin+1))->get_change_truthfulness())));
+            ui->stat_nat->setText(QString::fromStdString(std::to_string((*(begin+1))->get_change_wealth_nat())));
+            ui->stat_soc->setText(QString::fromStdString(std::to_string((*(begin+1))->get_change_wealth_soc())));
+            ui->relation_nat->setText(QString::fromStdString(std::to_string((*(begin+1))->get_change_relation_nat())));
+            ui->relation_soc->setText(QString::fromStdString(std::to_string((*(begin+1))->get_change_relation_soc())));
+    }
+        if(event->type()==QEvent::MouseButtonPress){//сделать не пресет эвенты
+            if(polosi->size()<3){
+                polosi->push_back(*(begin+1));
+                this->update_polosi();
+
+            }
+        }
+        if(event->type()==QEvent::Leave){
+            ui->desc_2->hide();
+            ui->desc_pict_2->hide();
+            ui->event_marker_2->show();
+            ui->truthful->setText(QString::fromStdString(std::to_string(0)));
+            ui->incom->setText(QString::fromStdString(std::to_string(0)));
+            ui->stat_nat->setText(QString::fromStdString(std::to_string(0)));
+            ui->stat_soc->setText(QString::fromStdString(std::to_string(0)));
+            ui->relation_nat->setText(QString::fromStdString(std::to_string(0)));
+            ui->relation_soc->setText(QString::fromStdString(std::to_string(0)));
+        }
+    }
+    if(watched==ui->event_3){
+        if(event->type()==QEvent::Enter){
+            ui->desc_3->show();
+            ui->event_marker_3->hide();
+            ui->desc_pict_3->show();
+            ui->incom->setText(QString::fromStdString(std::to_string((*(begin+2))->get_incom())));
+            ui->truthful->setText(QString::fromStdString(std::to_string((*(begin+2))->get_change_truthfulness())));
+            ui->stat_nat->setText(QString::fromStdString(std::to_string((*(begin+2))->get_change_wealth_nat())));
+            ui->stat_soc->setText(QString::fromStdString(std::to_string((*(begin+2))->get_change_wealth_soc())));
+            ui->relation_nat->setText(QString::fromStdString(std::to_string((*(begin+2))->get_change_relation_nat())));
+            ui->relation_soc->setText(QString::fromStdString(std::to_string((*(begin+2))->get_change_relation_soc())));
+    }
+        if(event->type()==QEvent::MouseButtonPress){//сделать не пресет эвенты
+            if(polosi->size()<3){
+                polosi->push_back(*(begin+2));
+                this->update_polosi();
+
+            }
+        }
+        if(event->type()==QEvent::Leave){
+            ui->desc_3->hide();
+            ui->desc_pict_3->hide();
+            ui->event_marker_3->show();
+            ui->truthful->setText(QString::fromStdString(std::to_string(0)));
+            ui->incom->setText(QString::fromStdString(std::to_string(0)));
+            ui->stat_nat->setText(QString::fromStdString(std::to_string(0)));
+            ui->stat_soc->setText(QString::fromStdString(std::to_string(0)));
+            ui->relation_nat->setText(QString::fromStdString(std::to_string(0)));
+            ui->relation_soc->setText(QString::fromStdString(std::to_string(0)));
+        }
+    }
+    if(watched==ui->event_4){
+        if(event->type()==QEvent::Enter){
+            ui->desc_4->show();
+            ui->event_marker_4->hide();
+            ui->desc_pict_4->show();
+            ui->incom->setText(QString::fromStdString(std::to_string((*(begin+3))->get_incom())));
+            ui->truthful->setText(QString::fromStdString(std::to_string((*(begin+3))->get_change_truthfulness())));
+            ui->stat_nat->setText(QString::fromStdString(std::to_string((*(begin+3))->get_change_wealth_nat())));
+            ui->stat_soc->setText(QString::fromStdString(std::to_string((*(begin+3))->get_change_wealth_soc())));
+            ui->relation_nat->setText(QString::fromStdString(std::to_string((*(begin+3))->get_change_relation_nat())));
+            ui->relation_soc->setText(QString::fromStdString(std::to_string((*(begin+3))->get_change_relation_soc())));
+    }
+        if(event->type()==QEvent::MouseButtonPress){//сделать не пресет эвенты
+            if(polosi->size()<3){
+                polosi->push_back(*(begin+3));
+                this->update_polosi();
+
+            }
+        }
+        if(event->type()==QEvent::Leave){
+            ui->desc_4->hide();
+            ui->desc_pict_4->hide();
+            ui->event_marker_4->show();
             ui->truthful->setText(QString::fromStdString(std::to_string(0)));
             ui->incom->setText(QString::fromStdString(std::to_string(0)));
             ui->stat_nat->setText(QString::fromStdString(std::to_string(0)));

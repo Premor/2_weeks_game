@@ -73,12 +73,12 @@ game_event::game_event(int id=1){
     string buf3;
     buf3=b.get();
         if(buf3[0]=='&')
-            buf3=b.get();
-        for(;buf3[0]!='1'&&buf3[0]!=EOF;){
+            b>>buf3;
+        for(;buf3!=std::to_string(id)&&buf3[0]!=EOF;){
            std::getline(b,buf2);
            buf3=b.get();
            if(buf3[0]=='&')
-               buf3=b.get();
+               b>>buf3;
 
         }
 
@@ -138,7 +138,12 @@ void newspaper::make_paper() {
     double k2=1.4;
     double k3=0.4;
 }
-
+void world::new_day(){
+    day++;
+}
+int world::get_day(){
+    return day;
+}
 void newspaper::weak_harass(nation * something,double k=1.) {
     something->change_stat(-10.0*k);
     something->change_relation(-20.0*k);

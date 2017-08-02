@@ -7,7 +7,7 @@
 #include "info.h"
 
 #include <QMediaPlayer>
-
+#include <QMediaPlaylist>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -15,8 +15,15 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     //init_world();
+    QMediaPlaylist *playlist=new QMediaPlaylist();
+    playlist->addMedia(QUrl::fromLocalFile("1.mp3"));
+    playlist->addMedia(QUrl::fromLocalFile("2.mp3"));
+    playlist->addMedia(QUrl::fromLocalFile("3.mp3"));
+    playlist->addMedia(QUrl::fromLocalFile("4.mp3"));
+    playlist->setPlaybackMode(QMediaPlaylist::Loop);
     QMediaPlayer *player = new QMediaPlayer;
-    player->setMedia(QUrl::fromLocalFile("10.mp3"));
+    player->setPlaylist(playlist);
+    //player->setMedia(QUrl::fromLocalFile("10.mp3"));
     player->setVolume(10);
     player->play();
 
@@ -52,10 +59,11 @@ MainWindow::MainWindow(QWidget *parent) :
 }
 
 void MainWindow::init_event(){
-    game_event *first=new game_event(1);
-    all_event.push_back(first);
-    first=new game_event(2);
-    all_event.push_back(first);
+    game_event *first;
+    for(int i=one.get_day()*4-3;i<=one.get_day()*4;i++){
+    first=new game_event(i);
+    all_event.push_back(first);}
+
 }
 void MainWindow::showEvent(QShowEvent *){
     update_polosi();
@@ -103,6 +111,10 @@ void MainWindow::new_frame(){
 }
 
 void MainWindow::next_day(){
+    if(polosi_gazeti.size()<3){
+
+    }
+        else{
     QDate date=(ui->calendarWidget)->selectedDate();
     date=date.addDays(Q_INT64_C(1));
     (ui->calendarWidget)->setSelectedDate(date);
@@ -115,13 +127,28 @@ void MainWindow::next_day(){
         buf[i]=*it;
     }while(it!=polosi_gazeti.begin()||i!=0);
     polosi_gazeti.clear();
+    //
+    one.get_paper()->add_money(-500);
+    one.get_nat()->change_stat(50.);
+    one.get_soc()->change_stat(-50.);
+    //
     one.get_nat()->change_stat(buf[0]->get_change_wealth_nat()+buf[1]->get_change_wealth_nat()*0.8+buf[2]->get_change_wealth_nat()*0.6);
     one.get_soc()->change_stat(buf[0]->get_change_wealth_soc()+buf[1]->get_change_wealth_soc()*0.8+buf[2]->get_change_wealth_soc()*0.6);
     one.get_nat()->change_relation(buf[0]->get_change_relation_nat()+buf[1]->get_change_relation_nat()*0.8+buf[2]->get_change_relation_nat()*0.6);
     one.get_soc()->change_relation(buf[0]->get_change_relation_soc()+buf[1]->get_change_relation_soc()*0.8+buf[2]->get_change_relation_soc()*0.6);
     one.get_paper()->add_money((int)(buf[0]->get_incom()+buf[1]->get_incom()*0.8+buf[2]->get_incom()*0.6));
     one.get_paper()->change_trust(buf[0]->get_change_truthfulness()+buf[1]->get_change_truthfulness()*0.8+buf[2]->get_change_truthfulness()*0.6);
+    one.new_day();
+    all_event.clear();
+    init_event();
+    update_polosi();
+        end_game();}
 }
+void MainWindow::end_game(){
+    if(one.get_day()>7||one.get_paper()->get_money()<0||one.get_nat()->get_relation()<(-1000))
+        this->close();
+}
+
 void MainWindow::begin_game(){
 
     //init();

@@ -40,6 +40,7 @@ private:
 
 public:
     void mocha();
+    void end_game();
 
 
 };

@@ -96,11 +96,14 @@ public:
 };
 
 class world {
+    int day=1;
     nation nat;
     society soc;
     newspaper paper;
     other_org org;
     public:
+        void new_day();
+        int get_day();
         nation* get_nat();
         society* get_soc();
         newspaper* get_paper();
